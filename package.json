@@ -1,4 +1,5 @@
 {
+  "homepage": "https://mariamatthews.github.io/portfolio",
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
@@ -9,6 +10,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
+    "terminal-in-react": "^4.3.1",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
