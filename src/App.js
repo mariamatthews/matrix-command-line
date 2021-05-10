@@ -1,20 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
 import Terminal from 'terminal-in-react';
+import React, { Component } from 'react';
 
+class App extends Component {
+  showMsg = () => 'Hello World'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        Oh well, here we are again:
+  render() {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: '800px'
+        }}
+      >
         <Terminal
-          color='green'
+          color='red'
           backgroundColor='black'
           barColor='black'
+          hideTopBar='true'
+          allowTabs='false'
+          startState='maximised'
           style={{ fontWeight: "bold", fontSize: "1em" }}
           commands={{
-            'open-google': () => window.open('https://www.google.com/', '_blank'),
+            'open-linkedin': () => window.open('https://www.linkedin.com/in/mariamatthews89/', '_blank'),
             showmsg: this.showMsg,
             popup: () => alert('Terminal in React')
           }}
@@ -23,11 +34,11 @@ function App() {
             showmsg: 'shows a message',
             alert: 'alert', popup: 'alert'
           }}
-          msg='You can write anything here. Example - Hello! My name is Foo and I like Bar.'
+          msg='Because why not lol. Welcome to matrix. Type "help" for the list of commands.'
         />
-      </header>
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
 export default App;
