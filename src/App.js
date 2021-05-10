@@ -6,9 +6,7 @@ import Terminal from 'terminal-in-react';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        Oh well, here we are again:
-        <Terminal
+<Terminal
           color='green'
           backgroundColor='black'
           barColor='black'
@@ -25,20 +23,6 @@ function App() {
           }}
           msg='You can write anything here. Example - Hello! My name is Foo and I like Bar.'
         />
-        
-        {/* <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
-      </header>
     </div>
   );
 }
