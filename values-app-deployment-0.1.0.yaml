@@ -1,0 +1,78 @@
+deployment:
+  container_port: 80
+  cpu_limit: 200m
+  cpu_request: 50m
+  encode_secret_values: false
+  environment_variables: null
+  hpa_enabled: null
+  image_pull_policy: IfNotPresent
+  liveness_probe:
+    failureThreshold: 3
+    httpGet:
+      path: /health/live
+      port: 80
+      scheme: HTTP
+    initialDelaySeconds: 60
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 5
+  max_surge: 100%
+  max_unavailable: 0%
+  memory_limit: 500Mi
+  memory_request: 100Mi
+  min_ready_seconds: 15
+  min_replicas: 2
+  node_selector_os: linux
+  pod_anti_affinity: false
+  pod_environment_variables: null
+  readiness_probe:
+    failureThreshold: 3
+    httpGet:
+      path: /health/ready
+      port: 80
+      scheme: HTTP
+    initialDelaySeconds: 60
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 5
+  revision_history_limit: 5
+  secret_environment_variables: null
+  stateful_singleton: false
+  termination_grace_period: 60
+  timeout: 300
+  build: 1.0.0.180
+  docker_image: twplatlabci.azurecr.io/address-resolver/address-resolver-api
+  name: test
+  namespace: address-resolver
+domain: labci.testapp.thameswater.co.uk
+hpa:
+  cpu_threshold: null
+  max_replicas: null
+  min_replicas: null
+service:
+  ports:
+    - name: web
+      port: 80
+      targetPort: 80
+ingress:
+  nginx_annotations:
+    traefik.frontend.rule.type: PathPrefixStrip
+  class: nginx
+  custom_response_headers: 'Server:||X-Frame-Options: DENY||X-Content-Type-Options: nosniff||Referer-Policy: strict-origin-when-cross-origin'
+  tls: true
+  enabled: true
+  paths:
+    - path: /api/addressresolver
+      service: address-resolver-api
+      pathType: Prefix
+certificate:
+  issuer: letsencrypt-prod-dns-issuer   
+service_monitor:
+  interval: null
+  path: null
+  port: null
+  scrape_timeout: null
+volume:
+  size: null
+namespace: address-resolver
+project: website
